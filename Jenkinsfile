@@ -9,6 +9,7 @@ pipeline {
     stages {
        stage('Checkout') {
 			steps {
+			    // 从SCM中检出代码
 				checkout scm
 			}
 		}
