@@ -1,4 +1,7 @@
+def name = "test_jenkins"
+def dockerfile = "."
 def dockerImage = "${name}:1.1.1.035"
+
 pipeline {
     agent any 
 
@@ -11,7 +14,7 @@ pipeline {
 		stage('Building'){
 			steps{
 				sh "docker build  -f ${dockerfile} -t ${dockerImage} ."
-				sh "docker tag ${dockerImage} ${url}/${dockerImage}"
+
 			}
 		}
 	}
