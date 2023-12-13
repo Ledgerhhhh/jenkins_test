@@ -13,13 +13,7 @@ pipeline {
 				sh "docker build  -f ${dockerfile} -t ${dockerImage} ."
 				sh "docker tag ${dockerImage} ${url}/${dockerImage}"
 			}
-		}  
-		stage('Publish'){
-			steps{
-				withDockerRegistry(credentialsId:"${credentialsId}",url:"https://${url}"){
-					sh "docker push ${url}/${dockerImage}"
-				}
-			}
+		}
 		}
 	}
 }
