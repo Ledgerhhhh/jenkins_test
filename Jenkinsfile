@@ -13,7 +13,7 @@ pipeline {
 		}
 		stage('Building'){
 			steps{
-				sh "docker version"
+				sh "docker build  -f ${dockerfile} -t ${dockerImage} ."
 			}
 		}
 	}
