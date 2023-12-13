@@ -14,6 +14,5 @@ pipeline {
 				sh "docker tag ${dockerImage} ${url}/${dockerImage}"
 			}
 		}
-		}
 	}
 }
