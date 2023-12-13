@@ -3,7 +3,7 @@ def dockerfile = "."
 def dockerImage = "${name}:1.1.1.035"
 
 pipeline {
-    agent any 
+    agent any
 
     stages {
        stage('Checkout') {
@@ -13,7 +13,7 @@ pipeline {
 		}
 		stage('Building'){
 			steps{
-				sh "echo hello world"
+				sh "docker version"
 			}
 		}
 	}
