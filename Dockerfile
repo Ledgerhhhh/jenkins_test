@@ -30,7 +30,7 @@ FROM alpine AS prod
 #安装 tzdata 和 vim 软件包。
 #设置时区为 Asia/Shanghai。
 #清理 apk 缓存。
-RUN echo -e 'https://dl-cdn.alpinelinux.org/alpine/v3.6/main/\nhttps://dl-cdn.alpinelinux.org/alpine/v3.6/community/' > /etc/apk/repositories \
+RUN echo -e 'https://mirrors.aliyun.com/alpine/v3.6/main/\nhttps://mirrors.aliyun.com/alpine/v3.6/community/' > /etc/apk/repositories \
     && apk update \
     && apk add --no-cache tzdata vim \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
