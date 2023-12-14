@@ -1,7 +1,9 @@
 def name = "test_jenkins"
 def dockerfile = "."
-def dockerImage = "${name}:1.1.1.035"
-def port = 8081
+def version = "1.1.1.035"
+def dockerImage = "${name}:${version}"
+def port = 8080
+def remoteMirrorWarehouse="registry.cn-hangzhou.aliyuncs.com/ledger_test_namespace/test_dockerfile"
 
 pipeline {
     agent any
@@ -18,9 +20,19 @@ pipeline {
 				sh "docker build -f ${dockerfile} -t ${dockerImage} ."
 			}
 		}
-		stage('Running'){
+		stage('Tag'){
 			steps{
-				sh "docker run -d --name ${name} -p ${port}:${port} ${dockerImage}"
+				sh "docker tag ${dockerImage} ${remoteMirrorWarehouse}:${version}"
+			}
+		}
+		stage('Publish'){
+			steps{
+				sh "docker push ${remoteMirrorWarehouse}:${version}"
+			}
+		}
+		stage('RemoveLocalImage'){
+			steps{
+				sh "docker rmi ${remoteMirrorWarehouse}:${version}"
 			}
 		}
 	}
