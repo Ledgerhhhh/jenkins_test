@@ -1,6 +1,6 @@
 def name = "test_jenkins"
 def dockerfile = "."
-def version = "1.1.1.035"
+def version = "1.1.1.036"
 def dockerImage = "${name}:${version}"
 def port = 8080
 def remoteMirrorWarehouse="registry.cn-hangzhou.aliyuncs.com/ledger_test_namespace/test_dockerfile"
